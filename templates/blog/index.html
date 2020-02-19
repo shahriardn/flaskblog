@@ -1,0 +1,317 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>Animus A Blogging Category Flat Bootstarp Resposive Website Template | Home :: w3layouts</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+
+	<link href="../static/css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+	<link href="../static/css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="Graphic Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+	<script
+		type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+	<script src="../static/js/jquery.min.js"></script>
+	<script>
+		$(document).ready(function () {
+			size_li = $("#myList li").size();
+			x = 3;
+			$('#myList li:lt(' + x + ')').show();
+			$('#loadMore').click(function () {
+				x = (x + 1 <= size_li) ? x + 1 : size_li;
+				$('#myList li:lt(' + x + ')').show();
+			});
+			$('#showLess').click(function () {
+				x = (x - 1 < 0) ? 1 : x - 1;
+				$('#myList li').not(':lt(' + x + ')').hide();
+			});
+		});
+	</script>
+
+</head>
+
+<body>
+	<!-- header -->
+	<div class="banner">
+		<div class="container">
+			<div class="header">
+				<div class="logo">
+					<a href="index.html"><img src="../static/images/logo.png" class="img-responsive" alt="" /></a>
+				</div>
+				<div class="header-right">
+					<ul>
+						<li><a href="#"><i class="fb"> </i></a></li>
+						<li><a href="#"><i class="twt"> </i></a></li>
+						<li>
+							<div class="search2">
+								<form>
+									<input type="text" value="Search.." onfocus="this.value = '';"
+										onblur="if (this.value == '') {this.value = 'Search..';}">
+									<input type="submit" value="">
+								</form>
+							</div>
+						</li>
+						<div class="clearfix"></div>
+					</ul>
+
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="head-nav">
+				<span class="menu"> </span>
+				<ul class="cl-effect-15">
+					<li class="active"><a href="index.html">HOME</a></li>
+					<li><a data-toggle="modal" href="#myModal" data-hover="NEWPost...">NewPost...</a></li>
+					<li><a href="/logout" data-hover="LOGOUT">LOGOUT</a></li>
+					<li><a href="404.html" data-hover="ARCHIVES">ARCHIVES</a></li>
+					<li><a href="contact.html" data-hover="CONTACT">CONTACT</a></li>
+					<div class="clearfix"> </div>
+				</ul>
+			</div>
+
+			<!-- script-for-nav -->
+			<script>
+				$("span.menu").click(function () {
+					$(".head-nav ul").slideToggle(300, function () {
+						// Animation complete.
+					});
+				});
+			</script>
+			<!-- script-for-nav -->
+		</div>
+	</div>
+	<!-- header -->
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Modal Header</h4>
+				</div>
+				<div class="modal-body">
+					<p>
+						<form action="/upload_file" enctype=multipart/form-data method="POST">
+							<div class="form-group">
+								<label for="usr">Name:</label>
+								<input type="text" class="form-control" name="title" id="usr">
+							</div>
+							<div class="form-group">
+								<label for="comment">Comment:</label>
+								<textarea class="form-control" rows="5" name="context" id="comment"></textarea>
+							</div>
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+								</div>
+								<div class="custom-file">
+									<input type="file" name="file" class="custom-file-input" id="inputGroupFile01"
+										aria-describedby="inputGroupFileAddon01">
+									<label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+								</div>
+							</div>
+							<button type="submit" class="btn btn-primary btn-block" formmethod="POST"> ثبت اطلاعات
+							</button>
+						</form>
+					</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- END MODAL -->
+	<!-- content -->
+	<div class="content">
+		<div class="container">
+			<div class="load_more">
+				<ul id="myList">
+					<!-- These are our grid blocks -->
+					{% for postes in context.postes %}
+					<li>
+						<div class="l_g">
+							<div class="col-md-3 praesent">
+								<div class="l_g_r">
+									<div class="dapibus">
+										<h3>
+											{{postes.0.title}}
+										</h3>
+										<p class="adm">Posted by <a href="#">{{postes.0.user_username}}</a>
+											{% if postes.0.user_username == context.user %}
+											<a data-toggle="modal" href="#edit{{postes.0.id}}">edit</a>
+											<div class="modal fade" id="edit{{postes.0.id}}" role="dialog">
+												<div class="modal-dialog">
+
+													<!-- Modal content-->
+													<div class="modal-content">
+														<div class="modal-header">
+															<button type="button" class="close"
+																data-dismiss="modal">&times;</button>
+															<h4 class="modal-title">Modal Header</h4>
+														</div>
+														<div class="modal-body">
+															<p>
+																<form action="/upload_file" enctype=multipart/form-data
+																	method="POST">
+																	<div class="form-group">
+																		<label for="usr">Name:</label>
+																		<input type="text" class="form-control"
+																			name="title" id="usr"
+																			value="{{postes.0.title}}">
+																	</div>
+																	<div class="form-group">
+																		<label for="comment">Comment:</label>
+																		<textarea class="form-control" rows="5"
+																			name="context" id="comment"> {{postes.0.context}}</textarea>
+																	</div>
+																	<div class="input-group">
+																		<div class="input-group-prepend">
+																			<span class="input-group-text"
+																				id="inputGroupFileAddon01">Upload</span>
+																		</div>
+																		<div class="custom-file">
+																			<input type="file" name="file"
+																				class="custom-file-input"
+																				id="inputGroupFile01"
+																				aria-describedby="inputGroupFileAddon01">
+																			<label class="custom-file-label"
+																				for="inputGroupFile01">Choose
+																				file</label>
+																				<input name="lastfile" value="{{postes.0.img}}" hidden>
+																		</div>
+																	</div>
+																	<button type="submit"
+																		class="btn btn-primary btn-block"
+																		formmethod="POST"> ثبت اطلاعات
+																	</button>
+																</form>
+															</p>
+														</div>
+														<div class="modal-footer">
+															<button type="button" class="btn btn-default"
+																data-dismiss="modal">Close</button>
+														</div>
+													</div>
+												</div>
+											</div>
+											{% endif %}
+										</p>
+										<a href="details.html"><img
+												src="../static/images/{{postes.0.user_username}}/{{postes.0.img}}"
+												class="img-responsive" alt=""></a>
+										<p>
+											{{postes.0.context}}
+										</p>
+										<a href="details.html" class="link">Read More</a>
+									</div>
+								</div>
+							</div>
+							{% for post in postes[1:] %}
+							<div class="col-md-3 integ ">
+								<div class="l_g_r">
+									<div class="dapibus">
+										<h2>
+											{{post.title}}
+										</h2>
+										<p class="adm">Posted by
+											<a href="#">{{post.user_username}}</a>
+											{% if post.user_username == context.user %}
+											<a href="#">edit</a>
+
+											{% endif %}
+										</p>
+										<a href="details.html"><img
+												src="../static/images/{{post.user_username}}/{{post.img}}"
+												class="img-responsive" alt=""></a>
+										<p>
+											{{post.context}}
+										</p>
+										<a href="details.html" class="link">Read More</a>
+									</div>
+								</div>
+							</div>
+							{% endfor %}
+
+							<div class="clearfix"></div>
+						</div>
+					</li>
+					{% endfor %}
+
+					<div class="clearfix"></div>
+					<!----//--->
+				</ul>
+				<div id="loadMore">Load more</div>
+				<div id="showLess">Show less</div>
+
+			</div>
+		</div>
+	</div>
+	<!-- content -->
+	<!-- footer -->
+	<div class="footer">
+		<div class="container">
+			<div class="col-md-3 copy">
+				<div class="top1">
+					<i class="ham"></i>
+				</div>
+				<div class="top2">
+					<h6>Copyrights © 2015 Graphic</h6>
+					<p>All rights reserved</p>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="col-md-3 copy">
+				<div class="top1">
+					<i class="men"></i>
+				</div>
+				<div class="top2">
+					<h6>Template by: </h6>
+					<p><a href="http://w3layouts.com/">W3layouts</a></p>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="col-md-3 copy">
+				<div class="top1">
+					<i class="app"></i>
+				</div>
+				<div class="top2">
+					<h6>Images From: </h6>
+					<p><a href="#"> www.wallcoo.net</a></p>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="col-md-3 copy">
+				<div class="top1">
+					<i class="lik"></i>
+				</div>
+				<div class="top2">
+					<h6>Website </h6>
+					<p><a href="#"> www.yourblog.com</a></p>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+	<!-- footer -->
+
+</body>
+
+</html>
