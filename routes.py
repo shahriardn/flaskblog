@@ -52,6 +52,11 @@ def loginme():
     else:
         return redirect('/login')
 
+@app.route("/logout")
+@login_required
+def logout():
+    logout_user()
+    return redirect("/login")
 
 @app.route("/test/")
 def test():
@@ -78,12 +83,18 @@ def upload_file():
         return redirect('/')
 
 
-@app.route("/logout")
+@app.route('/updatepost', methods=['GET', 'POST'])
 @login_required
-def logout():
-    logout_user()
-    return redirect("/login")
+def updatepost():
+    if theblog.updatepost(request, app) == True:
+        return redirect('/')
 
+
+@app.route('/deletepost/<id>', methods=['GET'])
+@login_required
+def deletepost(id):
+    if theblog.deletepost(id=id,username=current_user.username) == True:
+        return redirect('/')
 
 if __name__ == "__main__":
     app.run()

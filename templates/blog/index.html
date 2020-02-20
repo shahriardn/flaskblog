@@ -77,8 +77,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<li class="active"><a href="index.html">HOME</a></li>
 					<li><a data-toggle="modal" href="#myModal" data-hover="NEWPost...">NewPost...</a></li>
 					<li><a href="/logout" data-hover="LOGOUT">LOGOUT</a></li>
-					<li><a href="404.html" data-hover="ARCHIVES">ARCHIVES</a></li>
-					<li><a href="contact.html" data-hover="CONTACT">CONTACT</a></li>
 					<div class="clearfix"> </div>
 				</ul>
 			</div>
@@ -156,6 +154,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<p class="adm">Posted by <a href="#">{{postes.0.user_username}}</a>
 											{% if postes.0.user_username == context.user %}
 											<a data-toggle="modal" href="#edit{{postes.0.id}}">edit</a>
+											<a href="/deletepost/{{postes.0.id}}" style="color: red;">Delete</a>
 											<div class="modal fade" id="edit{{postes.0.id}}" role="dialog">
 												<div class="modal-dialog">
 
@@ -168,7 +167,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 														</div>
 														<div class="modal-body">
 															<p>
-																<form action="/upload_file" enctype=multipart/form-data
+																<form action="/updatepost" enctype=multipart/form-data
 																	method="POST">
 																	<div class="form-group">
 																		<label for="usr">Name:</label>
@@ -195,6 +194,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 																				for="inputGroupFile01">Choose
 																				file</label>
 																				<input name="lastfile" value="{{postes.0.img}}" hidden>
+																				<input name="id" value="{{postes.0.id}}" hidden>
 																		</div>
 																	</div>
 																	<button type="submit"
@@ -219,7 +219,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<p>
 											{{postes.0.context}}
 										</p>
-										<a href="details.html" class="link">Read More</a>
 									</div>
 								</div>
 							</div>
@@ -232,9 +231,54 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										</h2>
 										<p class="adm">Posted by
 											<a href="#">{{post.user_username}}</a>
-											{% if post.user_username == context.user %}
-											<a href="#">edit</a>
-
+											{% if postes.0.user_username == context.user %}
+											<a data-toggle="modal" href="#edit{{post.id}}">edit</a>
+											<a href="/deletepost/{{post.id}}" style="color: red;">Delete</a>
+											<div class="modal fade" id="edit{{post.id}}" role="dialog">
+												<div class="modal-dialog">
+											
+													<!-- Modal content-->
+													<div class="modal-content">
+														<div class="modal-header">
+															<button type="button" class="close" data-dismiss="modal">&times;</button>
+															<h4 class="modal-title">Modal Header</h4>
+														</div>
+														<div class="modal-body">
+															<p>
+																<form action="/updatepost" enctype=multipart/form-data method="POST">
+																	<div class="form-group">
+																		<label for="usr">Name:</label>
+																		<input type="text" class="form-control" name="title" id="usr" value="{{post.title}}">
+																	</div>
+																	<div class="form-group">
+																		<label for="comment">Comment:</label>
+																		<textarea class="form-control" rows="5" name="context"
+																			id="comment"> {{post.context}}</textarea>
+																	</div>
+																	<div class="input-group">
+																		<div class="input-group-prepend">
+																			<span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+																		</div>
+																		<div class="custom-file">
+																			<input type="file" name="file" class="custom-file-input" id="inputGroupFile01"
+																				aria-describedby="inputGroupFileAddon01">
+																			<label class="custom-file-label" for="inputGroupFile01">Choose
+																				file</label>
+																			<input name="lastfile" value="{{post.img}}" hidden>
+																			<input name="id" value="{{post.id}}" hidden>
+																		</div>
+																	</div>
+																	<button type="submit" class="btn btn-primary btn-block" formmethod="POST"> ثبت اطلاعات
+																	</button>
+																</form>
+															</p>
+														</div>
+														<div class="modal-footer">
+															<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+														</div>
+													</div>
+												</div>
+											</div>
 											{% endif %}
 										</p>
 										<a href="details.html"><img
@@ -243,7 +287,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<p>
 											{{post.context}}
 										</p>
-										<a href="details.html" class="link">Read More</a>
 									</div>
 								</div>
 							</div>
